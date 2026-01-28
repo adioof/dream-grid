@@ -8,6 +8,7 @@ export type GridItem = {
   id: string;
   width?: number;
   height?: number;
+  aspectRatio?: number;
 };
 
 export type DreamGridProps<T extends GridItem> = {

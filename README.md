@@ -24,6 +24,7 @@ npm install dream-grid
 
 ```tsx
 import { DreamGrid } from 'dream-grid';
+import 'dream-grid/styles.css';
 
 type Photo = {
   id: string;
@@ -193,12 +194,16 @@ Items must satisfy:
 ```ts
 type GridItem = {
   id: string;
-  width?: number;   // intrinsic width (for aspect ratio)
-  height?: number;  // intrinsic height (for aspect ratio)
+  width?: number;       // intrinsic width
+  height?: number;      // intrinsic height
+  aspectRatio?: number; // width / height (e.g. 16/9 = 1.778)
 };
 ```
 
-If `width` and `height` are provided, the grid calculates each item's rendered height to preserve the aspect ratio. If omitted, items render as squares.
+The grid resolves item height in this order:
+1. **`width` + `height`** — calculates aspect ratio from dimensions
+2. **`aspectRatio`** — uses the ratio directly (useful when you only have the ratio, not raw dimensions)
+3. **Neither** — renders as a square
 
 ## How It Works
 

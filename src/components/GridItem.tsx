@@ -14,14 +14,8 @@ export const GridItem = memo(
   }) {
     return (
       <div
-        style={{
-          position: 'absolute',
-          contain: 'layout style paint',
-          willChange: 'transform',
-          transform,
-          width,
-          height,
-        }}
+        className="dg-item"
+        style={{ transform, width, height }}
       >
         {children}
       </div>

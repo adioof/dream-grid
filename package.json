@@ -11,13 +11,14 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./styles.css": "./dist/dream-grid.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && cp src/dream-grid.css dist/dream-grid.css",
     "dev": "tsup --watch",
     "check-types": "tsc --noEmit",
     "lint": "eslint src/",
@@ -46,6 +47,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/dream-grid"
+    "url": "https://github.com/adioof/dream-grid"
   }
 }

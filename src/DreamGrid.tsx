@@ -46,9 +46,11 @@ const DreamGrid = <T extends GridItem>({
     dependencies: [items.length],
   });
 
+  const containerClass = className ? `dg-container ${className}` : 'dg-container';
+
   if (isLoading || !dimensions) {
     return (
-      <div ref={containerRef} className={className} style={{ width: '100%', ...style }}>
+      <div ref={containerRef} className={containerClass} style={style}>
         {renderLoader?.()}
       </div>
     );
@@ -56,7 +58,7 @@ const DreamGrid = <T extends GridItem>({
 
   if (items.length === 0 && !isLoading) {
     return (
-      <div ref={containerRef} className={className} style={{ width: '100%', ...style }}>
+      <div ref={containerRef} className={containerClass} style={style}>
         {renderEmpty?.()}
       </div>
     );
@@ -65,14 +67,8 @@ const DreamGrid = <T extends GridItem>({
   return (
     <div
       ref={containerRef}
-      className={className}
-      style={{
-        width: '100%',
-        height: totalHeight,
-        position: 'relative',
-        contain: 'strict',
-        ...style,
-      }}
+      className={containerClass}
+      style={{ height: totalHeight, ...style }}
     >
       {visibleItems.map(({ item, pos, index, transform }) => (
         <GridItemComponent

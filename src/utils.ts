@@ -23,7 +23,7 @@ export function calculateDimensions(
   return { columnCount, columnWidth };
 }
 
-export function calculatePositions<T extends { width?: number; height?: number }>(
+export function calculatePositions<T extends { width?: number; height?: number; aspectRatio?: number }>(
   items: T[],
   dimensions: Dimensions,
 ): { positions: Position[]; totalHeight: number } {
@@ -53,8 +53,13 @@ export function calculatePositions<T extends { width?: number; height?: number }
 
     const w = item.width;
     const h = item.height;
+    const ar = (item as { aspectRatio?: number }).aspectRatio;
     const height =
-      w && h && w !== h ? Math.round((columnWidth * h) / w) : columnWidth;
+      w && h && w !== h
+        ? Math.round((columnWidth * h) / w)
+        : ar && ar > 0
+          ? Math.round(columnWidth / ar)
+          : columnWidth;
     const top = columnHeights[column];
 
     positions[i] = { column, top, height, left: colLefts[column] };
