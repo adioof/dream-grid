@@ -1,5 +1,5 @@
 {
-  "name": "dream-grid",
+  "name": "dream-masonry",
   "version": "0.1.0",
   "description": "High-performance virtualized masonry grid for React",
   "type": "module",

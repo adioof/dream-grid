@@ -18,13 +18,13 @@ A high-performance virtualized masonry grid for React. Built with Float64Array-b
 ## Install
 
 ```bash
-npm install dream-grid
+npm install dream-masonry
 ```
 
 ## Quick Start
 
 ```tsx
-import { DreamGrid } from 'dream-grid';
+import { DreamGrid } from 'dream-masonry';
 
 type Photo = {
   id: string;
@@ -119,7 +119,7 @@ function ScrollablePanel() {
 ### `useGrid` — Full virtualization without the component
 
 ```tsx
-import { useGrid } from 'dream-grid';
+import { useGrid } from 'dream-masonry';
 
 function CustomGrid({ items }) {
   const { containerRef, dimensions, visibleItems, totalHeight } = useGrid({
@@ -158,7 +158,7 @@ function CustomGrid({ items }) {
 ### `usePositioner` — Layout math only, no DOM
 
 ```tsx
-import { usePositioner } from 'dream-grid';
+import { usePositioner } from 'dream-masonry';
 
 function LayoutDebugger({ items, width }) {
   const { positions, totalHeight, dimensions } = usePositioner({
@@ -176,7 +176,7 @@ function LayoutDebugger({ items, width }) {
 ### `useInfiniteScroll` — Standalone pagination
 
 ```tsx
-import { useInfiniteScroll } from 'dream-grid';
+import { useInfiniteScroll } from 'dream-masonry';
 
 useInfiniteScroll({
   fetchNextPage: loadMore,
